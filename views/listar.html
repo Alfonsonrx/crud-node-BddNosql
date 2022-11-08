@@ -4,20 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/index.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <title>Listar</title>
 </head>
 <body>
 
-    <button class="call-all-button">
-        <a>Listar a todos</a>
-    </button>
-    <button class="call-one-button">
-        <a>Listar a uno</a>
-    </button>
 
-    <div class="list-students">
+
+    <div class="container">
+        <div class="my-5 mx-auto" style="width: 100%;">
+            <button type="button" class="btn btn-secondary call-all-button">
+                <a>Listar a todos</a>
+            </button>
+            <button type="button" class="btn btn-secondary call-one-button">
+                <a>Listar a uno</a>
+            </button>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="m-3 table-container">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col"><span>Id</span></th>
+                                <th scope="col"><span>Nombre</span></th>
+                                <th scope="col"><span>Rol</span></th>
+                                <th scope="col"><span>Cumpleaños</span></th>
+                                <th colspan="2" scope="col"><span>-</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="list-students">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="studentIdInput" class="form-label">Student Id</label>
+                    <input type="number" class="form-control" id="studentIdInput">
+                </div>
+                <div class="mb-3">
+                    <label for="nameInput" class="form-label">Nombre</label>
+                    <input type="email" class="form-control" id="nameInput" placeholder="Alfredo">
+                </div>
+                <div class="mb-3">
+                    <label for="rolInput" class="form-label">Rol</label>
+                    <select class="form-select" id="rol-Options" aria-label="Default select">
+                        <option value="1" selected>Uno</option>
+                        <option value="2">Dos</option>
+                        <option value="3">Tres</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="birthdayInput" class="form-label">Cumpleaños</label>
+                    <input type="date" class="form-control" id="birthdayInput" required>
+                </div>
+                <div class="d-grid gap-2">
+                    <input type="text" class="form-control id_editar" hidden>
+                    <input type="text" class="form-control operacion" value="ingresar" hidden>
+                    <button class="btn btn-agregar" type="button">Agregar</button>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
 </body>
 <footer>

@@ -18,6 +18,20 @@ useUnifiedTopology: true }, function(error) {
 	}
 });
 
+// router.get('/save', function(req, res) {
+//     var newStudent = new StudentModel({StudentId:120, 
+//         Name:"Sam", Roll:1, Birthday:2001-09-02});
+
+//     newStudent.save(function(err, data) {
+//         if(err) {
+//             console.log(error);
+//         }
+//         else {
+//             res.send("Data inserted");
+//         }
+//     });
+// });
+
 router.post('/save', function(req, res) {
     var newStudent = new StudentModel();
     newStudent.StudentId = req.body.StudentId;
@@ -27,10 +41,14 @@ router.post('/save', function(req, res) {
 
     newStudent.save(function(err, data){
         if(err){
-            console.log(error);
+            console.log(err);
+            let errMsg = {error: "No se ha podido ingresar"};
+            res.send(errMsg);
         }
         else{
-            res.send("Data inserted");
+            let dataRes = {data: data,
+                        msj: "Data inserted"};
+            res.send(dataRes);
         }
     });
 });
@@ -41,13 +59,27 @@ router.get('/findall', function(req, res) {
             console.log(err);
         }
         else{
-            res.send(data);
+            res.send(data.sort((first,second)=>{return first.StudentId - second.StudentId}));
         }
     });  
 });
 
 router.post('/findfirst', function(req, res) {
-    StudentModel.findOne({StudentId: {$eq: req.body.student_id}}, 
+    StudentModel.findOne({StudentId: {$eq: req.body.student_id }}, 
+        function(err, data) {
+            if(err){
+                console.log(err);
+            }
+            else{
+                console.log(data);
+                res.send(data);
+            }
+        }
+    );  
+});
+
+router.post('/findone', function(req, res) {
+    StudentModel.findOne({_id: {$eq: req.body.student_id }}, 
         function(err, data) {
             if(err){
                 console.log(err);
@@ -59,20 +91,8 @@ router.post('/findfirst', function(req, res) {
     );  
 });
 
-// router.get('/delete', function(req, res) {
-//     StudentModel.remove({StudentId:188}, 
-//     function(err, data) {
-//         if(err){
-//             console.log(err);
-//         }
-//         else{
-//             res.send(data);
-//         }
-//     });  
-// });
-
 router.post('/delete', function(req, res) {
-    StudentModel.findByIdAndDelete((req.body.id), 
+    StudentModel.findByIdAndDelete((req.body.student_id), 
     function(err, data) {
         if(err){
             console.log(err);
@@ -85,8 +105,12 @@ router.post('/delete', function(req, res) {
 });
 
 router.post('/update', function(req, res) {
-    StudentModel.findByIdAndUpdate(req.body.id, 
-    {Name:req.body.Name}, function(err, data) {
+    StudentModel.findByIdAndUpdate(req.body.id, {
+            StudentId: req.body.StudentId,
+            Name: req.body.Name,
+            Roll: req.body.Roll,
+            Birthday: req.body.Birthday,
+        }, function(err, data) {
         if(err){
             console.log(err);
         }

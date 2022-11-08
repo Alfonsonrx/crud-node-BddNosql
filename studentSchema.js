@@ -1,7 +1,7 @@
 var mongoose=require('mongoose');
 
 var StudentSchema = new mongoose.Schema({
-	StudentId:Number,
+	StudentId:{ type : Number , unique : true, required : true, dropDups: true },
 	Name:String,
 	Roll:Number,
 	Birthday:Date,

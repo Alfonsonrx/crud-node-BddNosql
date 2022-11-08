@@ -1,0 +1,40 @@
+body{
+    background-color: #121F3D;
+}
+
+.container{  
+    text-align: center;  
+}  
+
+.table-container{
+    position: relative;
+    background: linear-gradient(to right, #B2FF59, #00C853);
+    padding: 0.3em;
+}
+
+table.table-bordered{
+    background: #222;
+    border: 1px solid #00C853;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+label,th, td  {
+    color: #EFF3F8;
+}
+
+th, td {
+    background: #222;
+    vertical-align: middle;
+    text-align: center;
+    border: 0px;
+}
+
+td button {
+    
+    width: 5em !important;
+}
+
+.btn-agregar {
+    background: linear-gradient(to right, #98ca3f, #00C853,#98ca3f);
+}
