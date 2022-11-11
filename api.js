@@ -4,8 +4,7 @@ var router = express.Router();
 var StudentModel = require('./studentschema');
 
 // Connecting to database
-var query = 'mongodb+srv://dcontreras:dcontreras'
-	+ '@clusterinacap.bdnmykt.mongodb.net/College?'
+var query = 'mongodb+srv://<username>:<password>@<cluster>.bdnmykt.mongodb.net/College?'
 	+ 'retryWrites=true&w=majority';
 
 const db = (query);
